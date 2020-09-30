@@ -66,7 +66,7 @@ const Question = (props) => {
                 }
             </div>
             {checkDisabled && (
-                <button className="submitQuestion" onClick={nextQuestion}>Next / Answer</button>
+                <button className="submitQuestion" onClick={nextQuestion}>Next Question</button>
             )}
         </div>
     )

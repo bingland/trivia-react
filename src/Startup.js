@@ -83,6 +83,7 @@ const Startup = (props) => {
 
     return (
         <div className="Startup">
+            <h1>Trivia App</h1>
             <label>Number of Questions: </label>
             <input type="text" onChange={updateSettings} name="numQuestions" value={numQuestions}></input>
             <br />

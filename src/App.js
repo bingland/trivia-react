@@ -4,6 +4,7 @@ import axios from 'axios'
 import './scss/styles.scss'
 import Startup from './Startup';
 import Question from './Question'
+import Scoreboard from './Scoreboard'
 
 function App() {
 
@@ -31,21 +32,25 @@ function App() {
 
   const nextQuestion = () => {
     console.log('clicked me :)')
+    setRound(round + 1)
   }
 
   const getResults = (result) => {
-    console.log(`Results: ${result}`)
+    if (result) {
+      setPoints(points + 1)
+    }
   }
-
-  let currQuestion = gameStatus === 'playing' ? (
-    <Question question={questions[round]} nextQuestion={nextQuestion} getResults={getResults} />
-  ) : ''
-
   return (
     <div className="App">
-      <h1>Trivia App</h1>
-      <Startup getQuestions={getQuestions} />
-      {currQuestion}
+      { gameStatus === 'setup' && (
+        <Startup getQuestions={getQuestions} />
+      )}
+      { gameStatus === 'playing' && (
+        <React.Fragment>
+          <Scoreboard round={round} points={points} />
+          <Question question={questions[round]} nextQuestion={nextQuestion} getResults={getResults} />
+        </React.Fragment>
+      )}
     </div>
   );
 }

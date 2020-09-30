@@ -1,0 +1,26 @@
+.Question {
+    padding: 10px;
+    border: 1px solid black;
+
+    .category {
+        background-color: lightblue;
+    }
+
+    .answers {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 400px;
+        font-size: 15px;
+        grid-gap: 5px;
+        margin-top: 5px;
+        .answer {
+            cursor: pointer;
+            padding: 7px;
+            border-radius: 5px;
+            background-color: lightcoral;
+        }
+        .answerActive {
+            background-color: red;
+        }
+    }
+}

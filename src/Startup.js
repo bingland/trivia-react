@@ -75,11 +75,9 @@ const Startup = (props) => {
     const makeURL = () => {
         let url = 'https://opentdb.com/api.php?'
         url += `&amount=${numQuestions}`
-        console.log(`Category: ${category}`)
         url += category !== 'any' && category !== 8 ? `&category=${category}` : ''
         url += difficulty !== 'any' ? `&difficulty=${difficulty}` : ''
         url += type !== 'any' ? `&type=${type}` : ''
-        console.log(url)
         props.getQuestions(url)
     }
 

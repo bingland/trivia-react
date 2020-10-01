@@ -14,11 +14,12 @@ const Question = (props) => {
             return [props.question.correct_answer, ...props.question.incorrect_answers].sort(() => Math.random() - 0.5)
         }
 
+        console.log('inside useEffect')
         setAnswers(shuffleAnswers())
         setUserAnswer(null)
         setCheckDisabled(false)
         setResults(null)
-    }, [props])
+    }, [props.question])
 
     // TODO: put selectAnswer into a useEffect function? 
 

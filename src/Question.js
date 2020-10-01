@@ -45,10 +45,16 @@ const Question = (props) => {
         props.nextQuestion()
     }
 
+    const decode = (code) => {
+        let txt = document.createElement("textarea");
+        txt.innerHTML = code;
+        return txt.value;
+    }
+
     let result = null
     if (results !== null) {
         console.log(`Result: ${result} !== null`)
-        result = results ? <div className="result correct">Correct!</div> : <div className="result incorrect">Incorrect!</div>
+        result = results ? <div className="result correct">Correct!</div> : <div className="result incorrect">Incorrect! Answer was {props.question.correct_answer}</div>
     }
 
     return (
@@ -58,11 +64,11 @@ const Question = (props) => {
             <div className="results">
                 { result }
             </div>
-            <div className="question">{props.question.question}</div>
+            <div className="question">{decode(props.question.question)}</div>
             <div className="answers">
                 {
                     answers.map((answer, index) => (
-                        <div className={userAnswer === index ? 'answer answerActive': 'answer'} key={index} data-id={index} onClick={selectAnswer}>{answer}</div>
+                        <div className={userAnswer === index ? 'answer answerActive': 'answer'} key={index} data-id={index} onClick={selectAnswer}>{decode(answer)}</div>
                     ))
                 }
             </div>

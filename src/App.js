@@ -5,6 +5,7 @@ import './scss/styles.scss'
 import Startup from './Startup';
 import Question from './Question'
 import Scoreboard from './Scoreboard'
+import GameOver from './GameOver'
 
 function App() {
 
@@ -45,6 +46,15 @@ function App() {
       setPoints(points + 1)
     }
   }
+
+  const playAgain = () => {
+    setNumQuestions(0)
+    setRound(0)
+    setPoints(0)
+    setQuestions({})
+    setGameStatus('setup')
+  }
+
   return (
     <div className="App">
       { gameStatus === 'setup' && (
@@ -55,6 +65,9 @@ function App() {
           <Scoreboard round={round} points={points} numQuestions={numQuestions}/>
           <Question question={questions[round]} nextQuestion={nextQuestion} getResults={getResults} />
         </React.Fragment>
+      )}
+      { gameStatus === 'gameover' && (
+        <GameOver points={points} numQuestions={numQuestions} playAgain={playAgain} />
       )}
     </div>
   );

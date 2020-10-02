@@ -76,7 +76,7 @@ const Question = (props) => {
                 { result }
             </div>
             {checkDisabled && (
-                <Button variant="contained" color="default" disableElevation  className="submitQuestion" onClick={nextQuestion}>Next Question</Button>
+                <Button variant="contained" color="default" disableElevation className="submitQuestion" onClick={nextQuestion}>Next Question</Button>
             )}
         </div>
     )

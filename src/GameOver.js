@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '@material-ui/core'
 
 // PROPS: points, numQuestions, playAgain()
 const GameOver = (props) => {
@@ -7,7 +8,7 @@ const GameOver = (props) => {
         <div className="GameOver">
             <h1>Final Score</h1>
             <div className="score">{props.points} / {props.numQuestions}</div>
-            <button onClick={props.playAgain}>Play Again</button>
+            <Button className="playAgain" variant="contained" color="default" disableElevation onClick={props.playAgain}>Play Again</Button>
         </div>
     )
 }

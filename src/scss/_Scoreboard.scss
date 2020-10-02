@@ -1,8 +1,15 @@
 .Scoreboard {
-    padding: 5px;
-    border: 1px solid black;
+    padding: 25px;
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+
     .round {
-        color: green;
-        font-weight: bold;
+        font-weight: 200;
+        margin-right: 30px;
+    }
+    .points {
+
     }
 }

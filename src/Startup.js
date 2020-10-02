@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Select, MenuItem, Button } from '@material-ui/core'
 
 const Startup = (props) => {
 
@@ -11,10 +12,10 @@ const Startup = (props) => {
 
 
     const categories = [
-        '[0] Any', '[1] General Knowledge', '[2] Entertainment: Books', '[3] Entertainment: Film', '[4] Entertainment: Music', '[5] Entertainment: Musicals & Theatres', '[6] Entertainment: Television', '[7] Entertainment: Video Games', '[8] Entertainment: Board Games', '[9] Science & Nature', '[10] Science: Computers', '[11] Science: Mathematics', '[12] Mythology', '[13] Sports', '[14] Geography', '[15] History', '[16] Politics', '[17] Art', '[18] Celebrities', '[19] Animals', '[20] Vehicles', '[21] Entertainment: Comics', '[22] Science: Gadgets', '[23] Entertainment: Japanese Anime & Manga', '[24] Entertainment: Cartoon & Animations'
+        'Any', 'General Knowledge', 'Entertainment: Books', 'Entertainment: Film', 'Entertainment: Music', 'Entertainment: Musicals & Theatres', 'Entertainment: Television', 'Entertainment: Video Games', 'Entertainment: Board Games', 'Science & Nature', 'Science: Computers', 'Science: Mathematics', 'Mythology', 'Sports', 'Geography', 'History', 'Politics', 'Art', 'Celebrities', 'Animals', 'Vehicles', 'Entertainment: Comics', 'Science: Gadgets', 'Entertainment: Japanese Anime & Manga', 'Entertainment: Cartoon & Animations'
     ]
-    const difficulties = ['[0] Any', '[1] Easy', '[2] Medium', '[3] Hard']
-    const gameTypes = ['[0] Any', '[1] Multiple Choice', '[2] True / False']
+    const difficulties = ['Any', 'Easy', 'Medium', 'Hard']
+    const gameTypes = ['Any', 'Multiple Choice', 'True / False']
 
     const updateSettings = (e) => {
         console.log(e.target.value)
@@ -71,7 +72,7 @@ const Startup = (props) => {
         }
     }
 
-    // pass up the URL to the App component when the button is clicked
+    // pass up the URL to the App component when the Button is clicked
     const makeURL = () => {
         let url = 'https://opentdb.com/api.php?'
         url += `&amount=${numQuestions}`
@@ -84,25 +85,38 @@ const Startup = (props) => {
     return (
         <div className="Startup">
             <h1>Trivia App</h1>
-            <label>Number of Questions: </label>
-            <input type="text" onChange={updateSettings} name="numQuestions" value={numQuestions}></input>
-            <br />
-            <label>Category: </label>
-            <select onChange={updateSettings} name="categories" value={String(category - 8)}>
-                { categories.map((cat, index) => <option key={index} value={index}>{cat}</option>) }
-            </select>
-            <br />
-            <label>Difficulty: </label>
-            <select onChange={updateSettings}  name="difficulties">
-                { difficulties.map((difficulty, index) => <option key={index} value={index}>{difficulty}</option>) }
-            </select>
-            <br />
-            <label>Game types: </label>
-            <select onChange={updateSettings} name="gameTypes">
-                { gameTypes.map((type, index) => <option key={index} value={index}>{type}</option>) }
-            </select>
-            <br />
-            <button onClick={() => { makeURL(); }}>Start</button>
+
+            <div className="inputs">
+                <div className="inputArea">
+                    <label># of Questions: </label>
+                    <input type="text" onChange={updateSettings} name="numQuestions" value={numQuestions} maxLength="2"></input>
+                </div>
+                
+                
+                <div className="inputArea">
+                    <label>Category: </label>
+                    <select onChange={updateSettings} name="categories" value={String(category - 8)}>
+                        { categories.map((cat, index) => <option key={index} value={index}>{cat}</option>) }
+                    </select>
+                </div>
+                
+                <div className="inputArea">
+                    <label>Difficulty: </label>
+                    <select onChange={updateSettings}  name="difficulties">
+                        { difficulties.map((difficulty, index) => <option key={index} value={index}>{difficulty}</option>) }
+                    </select>
+                </div>
+                
+                <div className="inputArea">
+                    <label>Game types: </label>
+                    <select onChange={updateSettings} name="gameTypes">
+                        { gameTypes.map((type, index) => <option key={index} value={index}>{type}</option>) }
+                    </select>
+                </div>
+            </div>
+            
+            
+            <Button variant="contained" color="default" disableElevation className="startBtn" onClick={() => { makeURL(); }}>Start Game</Button>
         </div>
     )
 }

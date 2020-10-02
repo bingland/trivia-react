@@ -1,17 +1,21 @@
 .GameOver {
-    color: green;
-    padding: 15px;
-    border: 1px solid black;
-    max-width: 300px;
+    padding: 35px;
+    max-width: 600px;
     text-align: center;
+    margin: 0 auto;
+    box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.24);
 
     h1 {
-        font-weight: bold;
+        font-weight: 200;
+        font-size: 70px;
     }
     .score {
-
+        margin-top: 20px;
+        font-size: 150px;
+        font-weight: 600;
     }
     button {
-
+        margin-top: 20px;
+        font-size: 50px;
     }
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Button } from '@material-ui/core'
 
 const Question = (props) => {
     
@@ -54,15 +55,14 @@ const Question = (props) => {
     let result = null
     if (results !== null) {
         console.log(`Result: ${result} !== null`)
-        result = results ? <div className="result correct">Correct!</div> : <div className="result incorrect">Incorrect! Answer was {props.question.correct_answer}</div>
+        result = results ? <div className="result correct">Correct!</div> : <div className="result incorrect">Incorrect! Answer was {decode(props.question.correct_answer)}</div>
     }
 
     return (
         <div className="Question">
-            <div className="category">{props.question.category}</div>
-            <div className="difficulty">{props.question.difficulty}</div>
-            <div className="results">
-                { result }
+            <div className="questionBar">
+                <div className="category">{props.question.category}</div>
+                <div className="difficulty">Difficulty: {props.question.difficulty}</div>
             </div>
             <div className="question">{decode(props.question.question)}</div>
             <div className="answers">
@@ -72,8 +72,11 @@ const Question = (props) => {
                     ))
                 }
             </div>
+            <div className="results">
+                { result }
+            </div>
             {checkDisabled && (
-                <button className="submitQuestion" onClick={nextQuestion}>Next Question</button>
+                <Button variant="contained" color="default" disableElevation  className="submitQuestion" onClick={nextQuestion}>Next Question</Button>
             )}
         </div>
     )

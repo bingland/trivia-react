@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Select, MenuItem, Button } from '@material-ui/core'
+import SelectForm from './components/SelectForm'
+import InputForm from './components/InputForm'
 
 const Startup = (props) => {
 
@@ -88,35 +89,40 @@ const Startup = (props) => {
 
             <div className="inputs">
                 <div className="inputArea">
-                    <label># of Questions: </label>
-                    <input type="text" onChange={updateSettings} name="numQuestions" value={numQuestions} maxLength="2"></input>
+                    <InputForm 
+                        change={updateSettings} 
+                        name="usernameForm"
+                        place="Username" />
                 </div>
                 
                 
                 <div className="inputArea">
-                    <label>Category: </label>
-                    <select onChange={updateSettings} name="categories" value={String(category - 8)}>
-                        { categories.map((cat, index) => <option key={index} value={index}>{cat}</option>) }
-                    </select>
+                    <SelectForm
+                        change={updateSettings} 
+                        name="categories" 
+                        items={categories}
+                        place="Category" />
                 </div>
                 
                 <div className="inputArea">
-                    <label>Difficulty: </label>
-                    <select onChange={updateSettings}  name="difficulties">
-                        { difficulties.map((difficulty, index) => <option key={index} value={index}>{difficulty}</option>) }
-                    </select>
+                    <SelectForm
+                        change={updateSettings} 
+                        name="difficulties" 
+                        items={difficulties}
+                        place="Difficulty" />
                 </div>
                 
                 <div className="inputArea">
-                    <label>Game types: </label>
-                    <select onChange={updateSettings} name="gameTypes">
-                        { gameTypes.map((type, index) => <option key={index} value={index}>{type}</option>) }
-                    </select>
+                    <SelectForm
+                        change={updateSettings} 
+                        name="gameTypes" 
+                        items={gameTypes}
+                        place="Game Type" />
                 </div>
             </div>
             
             
-            <Button variant="contained" color="default" disableElevation className="startBtn" onClick={() => { makeURL(); }}>Start Game</Button>
+            <button className="startBtn" onClick={() => { makeURL(); }}>Start Game</button>
         </div>
     )
 }

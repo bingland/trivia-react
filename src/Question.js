@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Button } from '@material-ui/core'
 
 const Question = (props) => {
     
@@ -76,7 +75,7 @@ const Question = (props) => {
                 { result }
             </div>
             {checkDisabled && (
-                <Button variant="contained" color="default" disableElevation className="submitQuestion" onClick={nextQuestion}>Next Question</Button>
+                <button className="submitQuestion" onClick={nextQuestion}>Next Question</button>
             )}
         </div>
     )

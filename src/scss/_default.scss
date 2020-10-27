@@ -1,8 +1,11 @@
+$greyText: #343434;
+
 *, html, body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Raleway', sans-serif;
     font-size: 30px;
     font-weight: 200;
     line-height: 1.4;
+    color: $greyText;
 }
 
 html {
@@ -10,15 +13,13 @@ html {
     //background-color: bisque;
 }
 
-body, #root, .App {
-    //height: 100%;
-}
+// body, #root, .App {
+//     //height: 100%;
+// }
 
-button {
-    border-radius: 10px;
-    border: 1px solid grey;
-    padding: 8px 20px;
-    cursor: pointer;
+body {
+    background: rgb(104,45,185);
+    background: linear-gradient(320deg, rgba(103, 45, 185, 0.507) 0%, rgba(204, 29, 29, 0.459) 100%);
 }
 
 .centerVertically {

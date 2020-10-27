@@ -1,54 +1,44 @@
+$greyText: #343434;
+
 .Startup {
     position: relative;
     margin: 0 auto;
-    width: 840px;
+    padding: 80px 0;
+    width: 490px;
     text-align: center;
-    box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.24);
-    padding: 30px;
-    padding-top: 0;
+    //box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.24);
     margin-top: 100px;
+    border-radius: 22px;
+    background-color: white;
 
     h1 {
         text-align: center;
         font-size: 80px;
-        font-weight: 200;
-        padding: 30px 0;
+        font-weight: 700;
+        padding-bottom: 30px;
     }
 
     .startBtn {
-        padding: 6px 25px;
+        padding: 15px 45px;
         text-transform: none;
-        font-weight: 300;
+        font-weight: 700;
+        font-size: 27px;
+        color: white;
+        background-color: $greyText;
+        border-radius: 16px;
+        border: none;
+        cursor: pointer;
     } 
 
     .inputs {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        margin: 0 auto;
+        grid-template-columns: 1fr;
+        margin: 0 64px;
         text-align: left;
 
-
         .inputArea {
-            margin-bottom: 30px;
-
-            select {
-                width: 220px;
-                padding: 5px;
-                font-size: 25px;
-                border-radius: 5px;
-                option {
-                    width: auto;
-                    font-size: 23px;
-                }
-            }
-
-            input {
-                width: 50px;
-                padding: 5px;
-                font-size: 25px;
-                border-radius: 5px;
-                border: 1px solid black;
-            }
+            margin-bottom: 32px;
+            width: 100%;
         }
     }
 }

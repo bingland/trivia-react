@@ -11,6 +11,46 @@ $greyText: #343434;
     border-radius: 22px;
     background-color: white;
 
+    .loginBtn {
+        padding: 15px 45px;
+        text-transform: none;
+        font-weight: 700;
+        font-size: 27px;
+        color: white;
+        background-color: $greyText;
+        border-radius: 22px;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: -(67px / 2);
+        right: -16px;
+
+    }
+
+    .backBtn {
+        padding: 0 15px;
+        padding-top: 8px;
+        text-transform: none;
+        font-weight: 700;
+        font-size: 27px;
+        color: white;
+        background-color: $greyText;
+        border-radius: 22px;
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: -(67px / 2);
+        right: -16px;
+        height: 67px;
+
+        svg {
+            width: 40px;
+            path {
+                stroke: white;
+            }
+        }
+    }
+
     h1 {
         text-align: center;
         font-size: 80px;
@@ -18,27 +58,47 @@ $greyText: #343434;
         padding-bottom: 30px;
     }
 
-    .startBtn {
-        padding: 15px 45px;
-        text-transform: none;
-        font-weight: 700;
-        font-size: 27px;
-        color: white;
-        background-color: $greyText;
-        border-radius: 16px;
-        border: none;
-        cursor: pointer;
-    } 
-
     .inputs {
         display: grid;
         grid-template-columns: 1fr;
         margin: 0 64px;
         text-align: left;
 
+        .startBtn {
+            padding: 15px 45px;
+            text-transform: none;
+            font-weight: 700;
+            font-size: 27px;
+            color: white;
+            background-color: $greyText;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;
+            width: auto;
+            margin: 0 auto;
+        } 
+
         .inputArea {
             margin-bottom: 32px;
             width: 100%;
+        }
+
+        .errorMessage {
+            font-size: 18px;
+            text-align: center;
+            margin: 20px;
+            margin-top: -5px;
+            cursor: pointer;
+            color: rgb(224, 34, 91);
+        }
+
+        .loginType {
+            font-size: 20px;
+            text-decoration: underline;
+            text-align: center;
+            margin: 50px;
+            margin-bottom: 0;
+            cursor: pointer;
         }
     }
 }

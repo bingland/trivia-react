@@ -4,11 +4,13 @@ const InputForm = (props) => {
     return (
         <div className="InputForm">
             <input
-                type="text" 
+                type={props.type}
                 onChange={props.change} 
                 name={props.name} 
                 maxLength={props.maxLength}
-                placeholder={props.place}>
+                placeholder={props.place}
+                required={props.required}
+                >
             </input>
             <hr className="formLineInput" />
         </div>

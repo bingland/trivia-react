@@ -10,6 +10,8 @@ const InputForm = (props) => {
                 maxLength={props.maxLength}
                 placeholder={props.place}
                 required={props.required}
+                value={props.value}
+                disabled={props.disabled}
                 >
             </input>
             <hr className="formLineInput" />

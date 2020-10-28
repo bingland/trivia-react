@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import SelectForm from './components/SelectForm'
 import InputForm from './components/InputForm'
+import { LoginContext } from './context/login-context'
 
 const Startup = (props) => {
+    const loginContext = useContext(LoginContext)
+    // loginContext.login()
+    // console.log(loginContext.isLoggedIn)
 
     // https://opentdb.com/api.php?amount=10&category=23&difficulty=medium&type=multiple
     const [numQuestions, setNumQuestions] = useState(10); //removed from user settings
@@ -10,7 +14,7 @@ const Startup = (props) => {
     const [difficulty, setDifficulty] = useState('any');
     const [type, setType] = useState('any');
     const [formStatus, setFormStatus] = useState('startup') // startup, login, sign up
-    const [username, setUsername] = useState('')
+    const [username, setUsername] = useState(loginContext.globalUsername)
     const [passcode, setPasscode] = useState('')
     const [confirmPasscode, setConfirmPasscode] = useState('')
     const [email, setEmail] = useState('')
@@ -125,12 +129,18 @@ const Startup = (props) => {
     const login = () => {
         if(username.replace(/\s/g, '') !== '' && passcode.replace(/\s/g, '')) {
             setFormStatus('startup')
+            loginContext.login(username)
         }
+    }
+
+    const logout = () => {
+        loginContext.logout()
     }
 
     const createAccount = () => {
         if ((passcode === confirmPasscode) && username.replace(/\s/g, '') !== '' && passcode.replace(/\s/g, '') && confirmPasscode.replace(/\s/g, '') !== '' && email.replace(/\s/g, '')) {
             setFormStatus('startup')
+            loginContext.login(username)
         } else if (passcode !== confirmPasscode) {
             setErrorMessage('Passcodes do not match.')
         }
@@ -140,11 +150,14 @@ const Startup = (props) => {
 
     return (
         <div className="Startup">
-            { formStatus === 'startup' && (
-                <button onClick={() => setFormStatus('login')} className="loginBtn">Log in</button>
+            { (formStatus === 'startup' && loginContext.isLoggedIn === false) && (
+                <button onClick={() => {setFormStatus('login'); resetFields()}} className="loginBtn">Log in</button>
+            )}
+            { (formStatus === 'startup' && loginContext.isLoggedIn === true) && (
+                <button onClick={() => {resetFields(); logout()}} className="loginBtn">Log Out</button>
             )}
             { (formStatus === 'login' || formStatus === 'signup') && (
-                <button onClick={() => setFormStatus('startup')} className="backBtn">
+                <button onClick={() => {setFormStatus('startup'); resetFields()}} className="backBtn">
                     <svg viewBox='0 0 512 512'><path fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='48' d='M328 112L184 256l144 144'/></svg>
                 </button>
             )}
@@ -158,7 +171,9 @@ const Startup = (props) => {
                             change={updateSettings} 
                             name="username"
                             place="Username" 
-                            required="required" />
+                            required="required"
+                            value={username}
+                            disabled={ loginContext.globalUsername !== '' ? true : false } />
                     </div>
                     
                     

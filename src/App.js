@@ -6,8 +6,10 @@ import Startup from './Startup';
 import Question from './Question'
 import Scoreboard from './Scoreboard'
 import GameOver from './GameOver'
+//import { LoginContext } from './context/login-context'
 
 function App() {
+  //const loginContext = useContext(LoginContext)
 
   const [questions, setQuestions] = useState({});
   //const [isLoading, setIsLoading] = useState(true)
@@ -17,6 +19,7 @@ function App() {
   const [numQuestions, setNumQuestions] = useState(0)
   const [round, setRound] = useState(0)
   const [points, setPoints] = useState(0)
+  //const [username, setUsername] = useState('')
 
   const getQuestions = (url) => {
     axios.get(url)

@@ -1,10 +1,21 @@
+$greyText: #343434;
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 .GameOver {
     padding: 35px;
     max-width: 400px;
     text-align: center;
     margin: 0 auto;
-    margin-top: 100px;
+    top: 100px;
     box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.24);
+    background-color: white;
+    border-radius: 22px;
+    position: relative;
+    animation: fadeIn 1s;
 
     h1 {
         font-weight: 200;
@@ -16,9 +27,14 @@
         font-weight: 600;
     }
     .playAgain {
-        margin-top: 20px;
-        padding: 6px 25px;
-        font-weight: 300;
+        padding: 15px 45px;
         text-transform: none;
+        font-weight: 700;
+        font-size: 27px;
+        color: white;
+        background-color: $greyText;
+        border-radius: 22px;
+        border: none;
+        cursor: pointer;
     }
 }

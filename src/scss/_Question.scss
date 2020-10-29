@@ -1,8 +1,14 @@
+$greyText: #343434;
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 .Question {
     padding: 30px;
     margin: 0 auto;
     background-color: white;
-    box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.24);
     max-width: 1000px;
 
     .questionBar {
@@ -22,6 +28,28 @@
 
     .results {
         margin-top: 20px;
+        width: 100%;
+        text-align: center;
+
+        .result {
+            margin-top: 40px;
+            animation: fadeIn 0.5s;
+        }
+
+        .submitQuestion {
+            margin: 0 auto;
+            margin-top: 40px;
+            font-weight: 300;
+            text-transform: none;
+            padding: 15px 45px;
+            font-size: 27px;
+            color: white;
+            background-color: $greyText;
+            border-radius: 16px;
+            border: none;
+            cursor: pointer;    
+            animation: fadeIn 0.5s;
+        }
     }
 
     .question {
@@ -36,6 +64,7 @@
         grid-gap: 15px;
         margin: 0 auto;
         margin-top: 5px;
+        
 
         .answer {
             cursor: pointer;
@@ -45,16 +74,9 @@
         }
 
         .answerActive {
-            background-color: rgb(69, 91, 189);
+            background-color: $greyText;
             color: white;
             transition: 0.2s;
         }
-    }
-
-    .submitQuestion {
-        margin-top: 20px;
-        padding: 6px 25px;
-        font-weight: 300;
-        text-transform: none;
     }
 }

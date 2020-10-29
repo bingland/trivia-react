@@ -1,15 +1,32 @@
+$greyText: #343434;
+
 .Scoreboard {
-    padding: 25px;
-    display: flex;
+    padding: 25px 0;
     width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
+    background-color: $greyText;
 
-    .round {
-        font-weight: 200;
-        margin-right: 30px;
-    }
-    .points {
+    .wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        color: white;
+        display: flex;
 
+        .username {
+            font-weight: 700;
+            margin-right: 30px;
+            color: white;
+            flex: 3;
+        }
+
+        .round {
+            font-weight: 200;
+            margin-right: 30px;
+            color: white;
+            flex: 1;
+        }
+        .points {
+            color: white;
+            flex: 1;
+        }
     }
 }

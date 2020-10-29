@@ -6,11 +6,9 @@ import Startup from './Startup';
 import Question from './Question'
 import Scoreboard from './Scoreboard'
 import GameOver from './GameOver'
-//import { LoginContext } from './context/login-context'
+import Background from './components/Background'
 
 function App() {
-  //const loginContext = useContext(LoginContext)
-
   const [questions, setQuestions] = useState({});
   //const [isLoading, setIsLoading] = useState(true)
 
@@ -19,7 +17,6 @@ function App() {
   const [numQuestions, setNumQuestions] = useState(0)
   const [round, setRound] = useState(0)
   const [points, setPoints] = useState(0)
-  //const [username, setUsername] = useState('')
 
   const getQuestions = (url) => {
     axios.get(url)
@@ -44,7 +41,6 @@ function App() {
   }
 
   const getResults = (result) => {
-    console.log(result)
     if (result) {
       setPoints(points + 1)
     }
@@ -61,7 +57,10 @@ function App() {
   return (
     <div className="App">
       { gameStatus === 'setup' && (
-        <Startup getQuestions={getQuestions} />
+        <React.Fragment>
+          <Background />
+          <Startup getQuestions={getQuestions} />
+        </React.Fragment>
       )}
       { gameStatus === 'playing' && (
         <React.Fragment>
@@ -70,7 +69,10 @@ function App() {
         </React.Fragment>
       )}
       { gameStatus === 'gameover' && (
-        <GameOver points={points} numQuestions={numQuestions} playAgain={playAgain} />
+        <React.Fragment>
+          <Background />
+          <GameOver points={points} numQuestions={numQuestions} playAgain={playAgain} />
+        </React.Fragment>
       )}
     </div>
   );

@@ -13,8 +13,6 @@ const Question = (props) => {
         const shuffleAnswers = () => {
             return [props.question.correct_answer, ...props.question.incorrect_answers].sort(() => Math.random() - 0.5)
         }
-
-        console.log('inside useEffect')
         setAnswers(shuffleAnswers())
         setUserAnswer(null)
         setCheckDisabled(false)
@@ -27,10 +25,10 @@ const Question = (props) => {
         if (userAnswer == null) {
             let attr = Number(e.target.getAttribute('data-id'))
             setUserAnswer(Number(e.target.getAttribute('data-id')))
-            console.log(e.target.getAttribute('data-id'))
+            //console.log(e.target.getAttribute('data-id'))
 
             let correct = answers[attr] === props.question.correct_answer ? true : false
-            console.log(`${answers[attr]} === ${props.question.correct_answer}`)
+            //console.log(`${answers[attr]} === ${props.question.correct_answer}`)
 
             setResults(correct)
             
@@ -53,7 +51,7 @@ const Question = (props) => {
 
     let result = null
     if (results !== null) {
-        console.log(`Result: ${result} !== null`)
+        //console.log(`Result: ${result} !== null`)
         result = results ? <div className="result correct">Correct!</div> : <div className="result incorrect">Incorrect! Answer was {decode(props.question.correct_answer)}</div>
     }
 
@@ -73,10 +71,11 @@ const Question = (props) => {
             </div>
             <div className="results">
                 { result }
+                {checkDisabled && (
+                    <button className="submitQuestion" onClick={nextQuestion}>Next Question</button>
+                )}
             </div>
-            {checkDisabled && (
-                <button className="submitQuestion" onClick={nextQuestion}>Next Question</button>
-            )}
+            
         </div>
     )
 }

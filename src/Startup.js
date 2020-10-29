@@ -200,7 +200,7 @@ const Startup = (props) => {
                             items={gameTypes}
                             place="Game Type" />
                     </div>
-                    <button type="submit" className="startBtn" onClick={() => { makeURL(); }}>Start Game</button>
+                    <button type="submit" className="startBtn" onClick={() => { makeURL(); loginContext.setGlobalUsername(username) }}>Start Game</button>
                 </form>
             )}
 

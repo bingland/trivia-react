@@ -175,7 +175,7 @@ const Startup = (props) => {
                             place="Username" 
                             required="required"
                             value={username !== null ? username : ''}
-                            disabled={ loginContext.globalUsername === '' ? true : false } />
+                            disabled={ loginContext.globalUsername === '' || loginContext.globalUsername === null ? false : true } />
                     </div>
                     
                     

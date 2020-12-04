@@ -2,9 +2,17 @@ import React, { useState, useContext } from 'react'
 import SelectForm from './components/SelectForm'
 import InputForm from './components/InputForm'
 import { LoginContext } from './context/login-context'
+import {
+    Switch,
+    Route,
+    Link,
+    useHistory
+} from "react-router-dom";
+  
 
 const Startup = (props) => {
     const loginContext = useContext(LoginContext)
+    const history = useHistory()
     // console.log(loginContext.globalUsername)
     // loginContext.login()
     // console.log(loginContext.isLoggedIn)
@@ -14,7 +22,6 @@ const Startup = (props) => {
     const [category, setCategory] = useState('any');
     const [difficulty, setDifficulty] = useState('any');
     const [type, setType] = useState('any');
-    const [formStatus, setFormStatus] = useState('startup') // startup, login, sign up
     const [username, setUsername] = useState(loginContext.globalUsername)
     const [passcode, setPasscode] = useState('')
     const [confirmPasscode, setConfirmPasscode] = useState('')
@@ -129,7 +136,7 @@ const Startup = (props) => {
 
     const login = () => {
         if(username.replace(/\s/g, '') !== '' && passcode.replace(/\s/g, '')) {
-            setFormStatus('startup')
+            history.push('/')
             loginContext.login(username)
         }
     }
@@ -140,7 +147,7 @@ const Startup = (props) => {
 
     const createAccount = () => {
         if ((passcode === confirmPasscode) && username.replace(/\s/g, '') !== '' && passcode.replace(/\s/g, '') && confirmPasscode.replace(/\s/g, '') !== '' && email.replace(/\s/g, '')) {
-            setFormStatus('startup')
+            history.push('/')
             loginContext.login(username)
         } else if (passcode !== confirmPasscode) {
             setErrorMessage('Passcodes do not match.')
@@ -151,21 +158,16 @@ const Startup = (props) => {
 
     return (
         <div className="Startup">
-            { (formStatus === 'startup' && loginContext.isLoggedIn === false) && (
-                <button onClick={() => {setFormStatus('login'); resetFields()}} className="loginBtn">Log in</button>
-            )}
-            { (formStatus === 'startup' && loginContext.isLoggedIn === true) && (
-                <button onClick={() => {resetFields(); logout()}} className="loginBtn">Log Out</button>
-            )}
-            { (formStatus === 'login' || formStatus === 'signup') && (
-                <button onClick={() => {setFormStatus('startup'); resetFields()}} className="backBtn">
-                    <svg viewBox='0 0 512 512'><path fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='48' d='M328 112L184 256l144 144'/></svg>
-                </button>
-            )}
-
             <h1>Trivia App</h1>
-
-            { formStatus === 'startup' && (
+            
+            <Switch>
+            <Route path="/" exact>
+                { (loginContext.isLoggedIn === false) && (
+                    <button onClick={resetFields} className="loginBtn"><Link to="/login">Log in</Link></button>
+                )}
+                { (loginContext.isLoggedIn === true) && (
+                    <button onClick={() => {resetFields(); logout()}} className="loginBtn">Log Out</button>
+                )}
                 <form className="inputs" onSubmit={preventDefault}>
                     <div className="inputArea">
                         <InputForm 
@@ -204,9 +206,15 @@ const Startup = (props) => {
                     </div>
                     <button type="submit" className="startBtn" onClick={() => { makeURL(); loginContext.setGlobalUsername(username) }}>Start Game</button>
                 </form>
-            )}
+            </Route>
 
-            { formStatus === 'login' && (
+            <Route path="/login">
+                <button onClick={resetFields} className="backBtn">
+                    <Link to="/">
+                        <svg viewBox='0 0 512 512'><path fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='48' d='M328 112L184 256l144 144'/></svg>
+                    </Link>
+                </button>
+            
                 <form className="inputs" onSubmit={preventDefault}>
                     <div className="inputArea">
                         <InputForm 
@@ -225,11 +233,18 @@ const Startup = (props) => {
                             required="required" />
                     </div>
                     <button type="submit" className="startBtn" onClick={ login }>Log In</button>
-                    <h2 className="loginType" onClick={() => {setFormStatus('signup'); resetFields()}}>Create an Account</h2>
+                    <h2 className="loginType" onClick={resetFields}><Link to="signup">Create an Account</Link></h2>
                 </form>
-            )}
+            
+            </Route>
 
-            { formStatus === 'signup' && (
+            <Route path="/signup">
+                <button onClick={resetFields} className="backBtn">
+                    <Link to="/">
+                        <svg viewBox='0 0 512 512'><path fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='48' d='M328 112L184 256l144 144'/></svg>
+                    </Link>
+                </button>
+
                 <form className="inputs" onSubmit={preventDefault}>
                     <div className="inputArea">
                         <InputForm 
@@ -267,9 +282,10 @@ const Startup = (props) => {
                         <h2 className="errorMessage">{errorMessage}</h2>
                     )}
                     <button type="submit" className="startBtn" onClick={ createAccount }>Create Account</button>
-                    <h2 className="loginType" onClick={() => {setFormStatus('login'); resetFields();}}>Log in</h2>
+                    <h2 className="loginType" onClick={resetFields}><Link to="/">Log in</Link></h2>
                 </form>
-            )}
+            </Route>
+            </Switch>
         </div>
     )
 }

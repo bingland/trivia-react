@@ -5,6 +5,7 @@ import { LoginContext } from './context/login-context'
 
 const Startup = (props) => {
     const loginContext = useContext(LoginContext)
+    // console.log(loginContext.globalUsername)
     // loginContext.login()
     // console.log(loginContext.isLoggedIn)
 
@@ -170,10 +171,11 @@ const Startup = (props) => {
                         <InputForm 
                             change={updateSettings} 
                             name="username"
+                            type="text"
                             place="Username" 
                             required="required"
-                            value={username}
-                            disabled={ loginContext.globalUsername !== '' ? true : false } />
+                            value={username !== null ? username : ''}
+                            disabled={ loginContext.globalUsername === '' ? true : false } />
                     </div>
                     
                     

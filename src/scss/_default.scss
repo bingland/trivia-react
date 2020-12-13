@@ -14,16 +14,19 @@ html {
     //background-color: bisque;
 }
 
-// body, #root, .App {
-//     //height: 100%;
-// }
+body, #root, .App {
+    height: 100%;
+}
+
+.App {
+    height: 100%;
+}
 
 .centerVertically {
     display: grid;
     grid-template-columns: 1fr;
     align-content: center;
     height: 100%;
-    background-color: yellow;
 }
 
 a {

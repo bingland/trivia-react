@@ -52,7 +52,7 @@ const Question = (props) => {
     let result = null
     if (results !== null) {
         //console.log(`Result: ${result} !== null`)
-        result = results ? <div className="result correct">Correct!</div> : <div className="result incorrect">Incorrect! Answer was {decode(props.question.correct_answer)}</div>
+        result = results ? <div className="result correct"><b>Correct!</b></div> : <div className="result incorrect"><b>Incorrect!</b> Answer was {decode(props.question.correct_answer)}</div>
     }
 
     return (

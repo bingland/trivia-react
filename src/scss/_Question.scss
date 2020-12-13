@@ -8,12 +8,13 @@ $greyText: #343434;
 .Question {
     padding: 30px;
     margin: 0 auto;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     max-width: 1000px;
+    height: calc(100% - 92px - 60px);
 
     .questionBar {
         display: flex;
-        font-size: 25px;
+        font-size: 22px;
 
         .category {
             margin-right: 35px;
@@ -32,13 +33,21 @@ $greyText: #343434;
         text-align: center;
 
         .result {
-            margin-top: 40px;
+            margin-top: 50px;
             animation: fadeIn 0.5s;
+        }
+        .result.correct {
+            color: green;
+            b { color: green; font-weight: bold; }
+        }
+        .result.incorrect {
+            color: rgb(146, 30, 30);
+            b { color: rgb(146, 30, 30); font-weight: bold; }
         }
 
         .submitQuestion {
             margin: 0 auto;
-            margin-top: 40px;
+            margin-top: 30px;
             font-weight: 300;
             text-transform: none;
             padding: 15px 45px;
@@ -54,6 +63,7 @@ $greyText: #343434;
 
     .question {
         padding: 20px 0;
+        font-weight: 500;
     }
 
     .answers {
@@ -71,12 +81,19 @@ $greyText: #343434;
             padding: 25px;
             border-radius: 5px;
             background-color: rgb(233, 233, 233);
+            transition-duration: 0s;
+        }
+        .answer:hover {
+            background-color: rgb(218, 218, 218);
         }
 
         .answerActive {
             background-color: $greyText;
             color: white;
-            transition: 0.2s;
+            transition: 0s;
+        }
+        .answerActive:hover {
+            background-color: $greyText;
         }
     }
 }

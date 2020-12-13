@@ -1,9 +1,10 @@
 $greyText: #343434;
 
 .Scoreboard {
-    padding: 25px 0;
+    padding: 25px;
     width: 100%;
     background-color: $greyText;
+    box-sizing: border-box;
 
     .wrapper {
         max-width: 1000px;

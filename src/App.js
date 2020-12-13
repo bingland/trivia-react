@@ -59,7 +59,9 @@ function App() {
       { gameStatus === 'setup' && (
         <React.Fragment>
           <Background />
-          <Startup getQuestions={getQuestions} />
+          <div className="centerVertically">
+            <Startup getQuestions={getQuestions} />
+          </div>
         </React.Fragment>
       )}
       { gameStatus === 'playing' && (
@@ -71,7 +73,9 @@ function App() {
       { gameStatus === 'gameover' && (
         <React.Fragment>
           <Background />
-          <GameOver points={points} numQuestions={numQuestions} playAgain={playAgain} />
+          <div className="centerVertically">
+            <GameOver points={points} numQuestions={numQuestions} playAgain={playAgain} />
+          </div>
         </React.Fragment>
       )}
     </div>

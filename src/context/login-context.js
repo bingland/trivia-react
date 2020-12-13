@@ -24,7 +24,6 @@ const LoginContextProvider = props => {
     const logoutHandler = () => {
         localStorage.setItem('isLoggedIn', false)
         localStorage.setItem('username', '')
-        console.log(localStorage.getItem('isLoggedIn'))
         setGlobalUsername('')
         setIsLoggedIn(false)
     }

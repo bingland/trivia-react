@@ -1,8 +1,10 @@
 #Background {
     height: 100%;
     width: 100%;
-    background: rgb(104,45,185);
-    background: linear-gradient(320deg, rgba(103, 45, 185, 0.507) 0%, rgba(204, 29, 29, 0.459) 100%);
+    // background: rgb(104,45,185);
+    // background: linear-gradient(320deg, rgba(103, 45, 185, 0.507) 0%, rgba(204, 29, 29, 0.459) 100%);
+    background: rgb(84,84,84);
+    background: linear-gradient(331deg, rgba(84,84,84,1) 0%, rgba(152,152,152,1) 100%);
     position: fixed;
     z-index: -1111;
 }

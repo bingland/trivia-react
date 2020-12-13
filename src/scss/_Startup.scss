@@ -9,32 +9,32 @@ $greyText: #343434;
     animation: fadeIn 1s;
     position: relative;
     margin: 0 auto;
-    padding: 80px 0;
-    width: 490px;
+    padding: 45px 0;
+    width: 400px;
     text-align: center;
     //box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.24);
-    top: 100px;
+    //top: 50px;
     border-radius: 22px;
     background-color: white;
 
     .loginBtn {
-        padding: 15px 45px;
+        padding: 13px 35px;
         text-transform: none;
         font-weight: 700;
-        font-size: 27px;
+        font-size: 24.5px;
         color: white;
         background-color: $greyText;
         border-radius: 22px;
         border: none;
         cursor: pointer;
         position: absolute;
-        top: -(67px / 2);
+        top: -(67px / 2) + 7px;
         right: -16px;
 
     }
 
     .backBtn {
-        padding: 0 15px;
+        padding: 0 8px;
         padding-top: 8px;
         text-transform: none;
         font-weight: 700;
@@ -45,12 +45,13 @@ $greyText: #343434;
         border: none;
         cursor: pointer;
         position: absolute;
-        top: -(67px / 2);
+        top: -(67px / 2) + 7px;
         right: -16px;
-        height: 67px;
+        height: 60px;
+        width: 60px;
 
         svg {
-            width: 40px;
+            width: 35px;
             path {
                 stroke: white;
             }
@@ -59,22 +60,22 @@ $greyText: #343434;
 
     h1 {
         text-align: center;
-        font-size: 80px;
+        font-size: 65px;
         font-weight: 700;
-        padding-bottom: 30px;
+        padding-bottom: 20px;
     }
 
     .inputs {
         display: grid;
         grid-template-columns: 1fr;
-        margin: 0 64px;
+        margin: 0 48px;
         text-align: left;
 
         .startBtn {
-            padding: 15px 45px;
+            padding: 15px 35px;
             text-transform: none;
             font-weight: 700;
-            font-size: 27px;
+            font-size: 22px;
             color: white;
             background-color: $greyText;
             border-radius: 16px;
@@ -85,7 +86,7 @@ $greyText: #343434;
         } 
 
         .inputArea {
-            margin-bottom: 32px;
+            margin-bottom: 25px;
             width: 100%;
         }
 
@@ -99,10 +100,10 @@ $greyText: #343434;
         }
 
         .loginType {
-            font-size: 20px;
+            font-size: 18px;
             text-decoration: underline;
             text-align: center;
-            margin: 50px;
+            margin: 20px;
             margin-bottom: 0;
             cursor: pointer;
         }

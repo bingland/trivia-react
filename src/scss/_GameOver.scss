@@ -6,11 +6,10 @@ $greyText: #343434;
 }
 
 .GameOver {
-    padding: 35px;
+    padding: 55px;
     max-width: 400px;
     text-align: center;
     margin: 0 auto;
-    top: 100px;
     box-shadow: 3px 3px 12px 0px rgba(0,0,0,0.24);
     background-color: white;
     border-radius: 22px;
@@ -22,9 +21,9 @@ $greyText: #343434;
         font-size: 40px;
     }
     .score {
-        margin-top: 20px;
         font-size: 130px;
         font-weight: 600;
+        margin-bottom: 10px;
     }
     .playAgain {
         padding: 15px 45px;

@@ -36,7 +36,6 @@ const Startup = (props) => {
 
     const updateSettings = (e) => {
         setErrorMessage('')
-        console.log(e.target.value)
         // username
         if (e.target.name === 'username') {
             setUsername(e.target.value)
@@ -74,7 +73,6 @@ const Startup = (props) => {
                     break
                 case 1:
                     setDifficulty('easy')
-                    console.log('easy mode?')
                     break
                 case 2:
                     setDifficulty('medium')
@@ -151,6 +149,8 @@ const Startup = (props) => {
             loginContext.login(username)
         } else if (passcode !== confirmPasscode) {
             setErrorMessage('Passcodes do not match.')
+        } else if (passcode.length < 8) {
+            setErrorMessage('Passcode must be at least 8 characters long.')
         }
     }
 
@@ -163,7 +163,7 @@ const Startup = (props) => {
             <Switch>
             <Route path="/" exact>
                 { (loginContext.isLoggedIn === false) && (
-                    <button onClick={resetFields} className="loginBtn"><Link to="/login">Log in</Link></button>
+                    <Link to="/login"><button onClick={resetFields} className="loginBtn">Log in</button></Link>
                 )}
                 { (loginContext.isLoggedIn === true) && (
                     <button onClick={() => {resetFields(); logout()}} className="loginBtn">Log Out</button>
@@ -209,11 +209,11 @@ const Startup = (props) => {
             </Route>
 
             <Route path="/login">
-                <button onClick={resetFields} className="backBtn">
-                    <Link to="/">
-                        <svg viewBox='0 0 512 512'><path fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='48' d='M328 112L184 256l144 144'/></svg>
-                    </Link>
-                </button>
+                <Link to="/">
+                    <button onClick={resetFields} className="backBtn">
+                            <svg viewBox='0 0 512 512'><path fill='none' stroke='currentColor' strokeLinecap='round' strokeLinejoin='round' strokeWidth='48' d='M328 112L184 256l144 144'/></svg>
+                    </button>
+                </Link>
             
                 <form className="inputs" onSubmit={preventDefault}>
                     <div className="inputArea">

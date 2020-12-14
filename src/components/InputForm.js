@@ -12,6 +12,7 @@ const InputForm = (props) => {
                 required={props.required}
                 value={props.value}
                 disabled={props.disabled}
+                autoComplete="off"
                 >
             </input>
             <hr className="formLineInput" />

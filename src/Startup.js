@@ -144,7 +144,7 @@ const Startup = (props) => {
     }
 
     const createAccount = () => {
-        if ((passcode === confirmPasscode) && username.replace(/\s/g, '') !== '' && passcode.replace(/\s/g, '') && confirmPasscode.replace(/\s/g, '') !== '' && email.replace(/\s/g, '')) {
+        if ((passcode === confirmPasscode) && username.replace(/\s/g, '') !== '' && passcode.replace(/\s/g, '') && confirmPasscode.replace(/\s/g, '') !== '' && email.replace(/\s/g, '') && passcode.length >= 8) {
             history.push('/')
             loginContext.login(username)
         } else if (passcode !== confirmPasscode) {

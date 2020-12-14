@@ -161,53 +161,6 @@ const Startup = (props) => {
             <h1>Trivia App</h1>
             
             <Switch>
-            <Route path="/" exact>
-                { (loginContext.isLoggedIn === false) && (
-                    <Link to="/login"><button onClick={resetFields} className="loginBtn">Log in</button></Link>
-                )}
-                { (loginContext.isLoggedIn === true) && (
-                    <button onClick={() => {resetFields(); logout()}} className="loginBtn">Log Out</button>
-                )}
-                <form className="inputs" onSubmit={preventDefault}>
-                    <div className="inputArea">
-                        <InputForm 
-                            change={updateSettings} 
-                            name="username"
-                            type="text"
-                            place="Username" 
-                            required="required"
-                            value={username !== null ? username : ''}
-                            disabled={ loginContext.globalUsername === '' || loginContext.globalUsername === null ? false : true } />
-                    </div>
-                    
-                    
-                    <div className="inputArea">
-                        <SelectForm
-                            change={updateSettings} 
-                            name="categories" 
-                            items={categories}
-                            place="Category" />
-                    </div>
-                    
-                    <div className="inputArea">
-                        <SelectForm
-                            change={updateSettings} 
-                            name="difficulties" 
-                            items={difficulties}
-                            place="Difficulty" />
-                    </div>
-                    
-                    <div className="inputArea">
-                        <SelectForm
-                            change={updateSettings} 
-                            name="gameTypes" 
-                            items={gameTypes}
-                            place="Game Type" />
-                    </div>
-                    <button type="submit" className="startBtn" onClick={() => { makeURL(); loginContext.setGlobalUsername(username) }}>Start Game</button>
-                </form>
-            </Route>
-
             <Route path="/login">
                 <Link to="/">
                     <button onClick={resetFields} className="backBtn">
@@ -283,6 +236,53 @@ const Startup = (props) => {
                     )}
                     <button type="submit" className="startBtn" onClick={ createAccount }>Create Account</button>
                     <h2 className="loginType" onClick={resetFields}><Link to="/">Log in</Link></h2>
+                </form>
+            </Route>
+
+            <Route path="/">
+                { (loginContext.isLoggedIn === false) && (
+                    <Link to="/login"><button onClick={resetFields} className="loginBtn">Log in</button></Link>
+                )}
+                { (loginContext.isLoggedIn === true) && (
+                    <button onClick={() => {resetFields(); logout()}} className="loginBtn">Log Out</button>
+                )}
+                <form className="inputs" onSubmit={preventDefault}>
+                    <div className="inputArea">
+                        <InputForm 
+                            change={updateSettings} 
+                            name="username"
+                            type="text"
+                            place="Username" 
+                            required="required"
+                            value={username !== null ? username : ''}
+                            disabled={ loginContext.globalUsername === '' || loginContext.globalUsername === null ? false : true } />
+                    </div>
+                    
+                    
+                    <div className="inputArea">
+                        <SelectForm
+                            change={updateSettings} 
+                            name="categories" 
+                            items={categories}
+                            place="Category" />
+                    </div>
+                    
+                    <div className="inputArea">
+                        <SelectForm
+                            change={updateSettings} 
+                            name="difficulties" 
+                            items={difficulties}
+                            place="Difficulty" />
+                    </div>
+                    
+                    <div className="inputArea">
+                        <SelectForm
+                            change={updateSettings} 
+                            name="gameTypes" 
+                            items={gameTypes}
+                            place="Game Type" />
+                    </div>
+                    <button type="submit" className="startBtn" onClick={() => { makeURL(); loginContext.setGlobalUsername(username) }}>Start Game</button>
                 </form>
             </Route>
             </Switch>
